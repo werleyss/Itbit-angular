@@ -1,1 +1,88 @@
-<p>novo-usuario works!</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="cadastroForm">
+<div class="container">
+  <div class="row margin-tb">
+    <div class="col-6 text-left">
+      <h3>Novo Usuário</h3>
+    </div>
+  </div>
+  <div class="card shadow mt-2 bg-white rounded">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="form-group">
+            <label for="nome" class="col-form-label">Nome</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              class="form-control"
+              placeholder="Nome"
+              formControlName="nome"
+            />
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+          <div class="form-group">
+            <label for="data_nascimento" class="col-form-label">Data Nascimento</label>
+            <input
+              type="date"
+              id="data_nascimento"
+              name="data_nascimento"
+              class="form-control"
+              formControlName="data_nascimento"
+            />
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+          <div class="form-group">
+            <label for="sexo" class="col-form-label">Sexo</label>
+            <select
+              id="sexo"
+              name="sexo"
+              class="form-control"
+              formControlName="sexo"
+            >
+              <option [ngValue]="M">Masculino</option>
+              <option [ngValue]="F">Feminino</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="form-group">
+            <label for="email" class="col-form-label">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="E-mail"
+              formControlName="email"
+            />
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="form-group">
+            <label for="senha" class="col-form-label">Senha</label>
+            <input
+              type="password"
+              id="senha"
+              name="senha"
+              class="form-control"
+              placeholder="Senha"
+              formControlName="senha"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="col-12 text-right">
+        <div class="text-right btns-group">
+          <a  href="javascript:window.history.back();" class="btn btn-secondary">Voltar</a>
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

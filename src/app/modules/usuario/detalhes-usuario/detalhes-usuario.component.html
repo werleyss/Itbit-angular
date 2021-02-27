@@ -1,48 +1,75 @@
 <div class="container">
-  <div class="shadow-lg p-3 mb-0 bg-white rounded">
-    <div class="row">
-      <div class="col-sm-4 col-md-3 col-lg-2 col-xl-4">
-        <div class="form-group">
-            <label for="nome" class="col-form-label">Nome</label>
-            <input type="text" id="nome" name="nome" class="form-control" placeholder="Pesquise pelo nome" [(ngModel)]="pesquisa.nome">
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-2 col-xl-2">
-        <div class="form-group">
-          <div class="form-check form-check-inline status-filtro">
-            <input class="form-check-input" type="checkbox" id="ativo" [(ngModel)]="pesquisa.ativo">
-            <label class="form-check-label" for="ativo">Ativo</label>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right ">
-          <div class="text-right btns-group">
-            <button class="btn btn-secondary" (click)="pesquisar()">Pesquisar</button>
-              <a [routerLink]="['novo']" class="btn btn-success">Novo</a>
-          </div>
-      </div>
+  <div class="row margin-tb">
+    <div class="col-6 text-left">
+      <h3>Usuários</h3>
     </div>
   </div>
-  <div class="shadow-lg p-3 mb-5 bg-white rounded">
-    <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>E-mail</th>
-            <th>Sexo</th>
-            <th>Ativo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of listaUsuario.data" [routerLink]="['editar', item.id]" class="cursor">
-            <td>Werley</td>
-            <td>26</td>
-            <td>werley_desouzasilva@hotmail.com</td>
-            <td>M</td>
-            <td>Sim</td>
-          </tr>
-        </tbody>
-    </table>
+  <div class="card shadow mt-2 bg-white rounded">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="form-group">
+            <label for="nome" class="col-form-label">Nome</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              class="form-control"
+              placeholder="Pesquise pelo nome"
+              [(ngModel)]="pesquisa.nome"
+            />
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-2 col-lg-2 col-xl-2">
+          <div class="form-group">
+            <div class="form-check form-check-inline status-filtro">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="ativo"
+                [(ngModel)]="pesquisa.ativo"
+              />
+              <label class="form-check-label" for="ativo">Ativo</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 text-right mt-4">
+          <div class="text-right btns-group">
+            <button class="btn btn-secondary" (click)="pesquisar()">
+              Pesquisar
+            </button>
+            <a [routerLink]="['novo']" class="btn btn-primary">Novo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Idade</th>
+              <th>E-mail</th>
+              <th>Sexo</th>
+              <th>Ativo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let item of listaUsuario.data"
+              [routerLink]="['editar', item.id]"
+              class="cursor"
+            >
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

@@ -13,4 +13,12 @@ export class UsuarioService {
   obterTodos(search: UsuarioModel): Observable<UsuarioModel[]>{
     return this.http.get<UsuarioModel[]>(`${environment.apiURL}/${search}`);
   }
+
+  adicionar(usuario: UsuarioModel): Observable<UsuarioModel>{
+    return this.http.post<UsuarioModel>(`${environment.apiURL}/usuario`, usuario);
+  }
+
+  atualizar(id: number, usuario: UsuarioModel): Observable<UsuarioModel>{
+    return this.http.put<UsuarioModel>(`${environment.apiURL}/usuario/${id}`, usuario);
+  }
 }

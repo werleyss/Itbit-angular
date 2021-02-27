@@ -1,4 +1,5 @@
 export class UsuarioModel{
+  id?: number;
   nome?: string;
   data_nascimento?: string;
   email?: string;
