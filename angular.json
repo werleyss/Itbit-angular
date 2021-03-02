@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Itbit-angular"
+    }
+  },
+  "defaultProject": "Itbit-angular",
+  "cli": {
+    "analytics": "56019758-1e3e-491c-b03e-f6b213a71f42"
+  }
 }
