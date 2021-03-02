@@ -1,3 +1,3 @@
 export class ListaPaginadaModel<T>{
-    data: T[] = [];
+    data: T;
 }

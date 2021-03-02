@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row margin-tb">
     <div class="col-6 text-left">
-      <h3>Novo Usuário</h3>
+      <h3>{{alterar === true ? "Editar" : "Novo"}} Usuário</h3>
     </div>
   </div>
   <div class="card shadow mt-2 bg-white rounded">
@@ -23,13 +23,13 @@
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
           <div class="form-group">
-            <label for="data_nascimento" class="col-form-label">Data Nascimento</label>
+            <label for="dataNascimento" class="col-form-label">Data Nascimento</label>
             <input
               type="date"
-              id="data_nascimento"
-              name="data_nascimento"
+              id="dataNascimento"
+              name="dataNascimento"
               class="form-control"
-              formControlName="data_nascimento"
+              formControlName="dataNascimento"
             />
           </div>
         </div>
@@ -42,8 +42,8 @@
               class="form-control"
               formControlName="sexo"
             >
-              <option [ngValue]="M">Masculino</option>
-              <option [ngValue]="F">Feminino</option>
+              <option [ngValue]="'M'">Masculino</option>
+              <option [ngValue]="'F'">Feminino</option>
             </select>
           </div>
         </div>
@@ -79,7 +79,7 @@
       <div class="col-12 text-right">
         <div class="text-right btns-group">
           <a  href="javascript:window.history.back();" class="btn btn-secondary">Voltar</a>
-          <button type="submit" class="btn btn-primary">Cadastrar</button>
+          <button type="submit" class="btn btn-primary">{{alterar === true ? "Editar" : "Cadastrar"}}</button>
         </div>
       </div>
     </div>

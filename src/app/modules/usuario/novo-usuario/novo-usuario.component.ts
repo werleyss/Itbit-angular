@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { UsuarioService } from './../usuario.service';
 import { UsuarioModel } from './../../../shared/models/usuario/usuario-model';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-novo-usuario',
@@ -27,6 +28,22 @@ export class NovoUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.criarForm();
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+      const pattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+      if (pattern.test(id)){
+        this.alterar = true;
+        this.usuario$.obterPorId(id).subscribe(
+          retorno => {
+              this.objUsuario = retorno;
+              this.criarForm();
+          },
+          err => {
+            console.log(err);
+          }
+        );
+      }
+    });
   }
 
   adicionar(){
@@ -46,6 +63,7 @@ export class NovoUsuarioComponent implements OnInit {
     this.atualizarDadosObjeto();
     this.usuario$.atualizar(this.objUsuario.id,  this.objUsuario).subscribe(
       retorno => {
+          this.limparForm();
           console.log(retorno);
       },
       err => {
@@ -62,12 +80,12 @@ export class NovoUsuarioComponent implements OnInit {
       this.cadastroForm = this.fb.group({
             id:                          [{ value: !this.alterar ? 0 : this.objUsuario?.id, disabled: true }],
             nome:                    [!this.alterar ? null : this.objUsuario?.nome, [Validators.required, Validators.minLength(3)]],
-            data_nascimento:  [!this.alterar ? null : this.objUsuario?.data_nascimento, [Validators.required]],
+            dataNascimento:  [!this.alterar ? null : this.objUsuario?.dataNascimento, [Validators.required]],
             email:                    [!this.alterar ? null : this.objUsuario?.email, [Validators.required]],
             senha:                    [!this.alterar ? null : this.objUsuario?.senha],
             sexo:                      [!this.alterar ? null : this.objUsuario?.sexo, [Validators.required]],
             ativo:                     [!this.alterar ? true : this.objUsuario?.ativo],
-      })
+      });
   }
 
   limparForm(){
@@ -80,4 +98,5 @@ export class NovoUsuarioComponent implements OnInit {
       if(this.alterar) this.atualizar()
       else this.adicionar();
   }
+
 }

@@ -10,21 +10,21 @@ import { ListaPaginadaModel } from './../../../shared/models/paginacao/lista-pag
 })
 export class DetalhesUsuarioComponent implements OnInit {
   pesquisa: UsuarioModel = new UsuarioModel();
-  listaUsuario: ListaPaginadaModel<UsuarioModel> = new ListaPaginadaModel<UsuarioModel>();
+  listaUsuario: ListaPaginadaModel<UsuarioModel[]> = new ListaPaginadaModel<UsuarioModel[]>();
   constructor( private usuario$: UsuarioService ) { }
 
   ngOnInit(): void {
+    this.pesquisar();
   }
 
-  pesquisar(){
-    this.usuario$.obterTodos(this.pesquisa).subscribe(
+  pesquisar(): void{
+    this.usuario$.obterTodos(this.pesquisa.nome? this.pesquisa.nome : '', this.pesquisa.ativo).subscribe(
       retorno => {
         this.listaUsuario.data = retorno;
       },
       err => {
         console.log(err);
-      }
-    )
+      });
   }
 
 }

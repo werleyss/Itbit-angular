@@ -56,16 +56,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              *ngFor="let item of listaUsuario.data"
-              [routerLink]="['editar', item.id]"
-              class="cursor"
-            >
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr *ngFor="let item of listaUsuario.data" [routerLink]="['editar', item.id]" class="cursor">
+              <td>{{item.nome}}</td>
+              <td>{{item.idade}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.sexo}}</td>
+              <td>{{item.ativo  === true ? "Sim": "Não"}}</td>
             </tr>
           </tbody>
         </table>

@@ -1,10 +1,10 @@
 export class UsuarioModel{
-  id?: number;
+  id?: string;
   nome?: string;
-  data_nascimento?: string;
+  dataNascimento?: string;
+  idade: number;
   email?: string;
   senha?: string;
-  sexo?: string;
+  sexo?: 'M'| 'F';
   ativo?: boolean = true;
-
 }
